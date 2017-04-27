@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:text="SISTEMA DE UBICACIÓN DE CICLISTAS EN TIEMPO REAL"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/textView"
+        android:layout_weight="10"
+        tools:text="SISTEMA DE UBICACIÓN DE CICLISTAS EN TIEMPO REAL"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textAlignment="center"
+        android:textStyle="normal|bold"
+        android:textSize="18sp"
+        android:lineSpacingExtra="8sp"
+        android:typeface="sans"
+        android:fontFamily="sans-serif"
+        android:textAllCaps="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="25" >
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_weight="3"
+            android:src="@drawable/dgtlogo"
+             />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/gistlogo"
+            android:id="@+id/imageView2"
+            android:layout_weight="2" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/uclogo"
+            android:id="@+id/imageView3"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/BotonActivar"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:background="@color/colorPrimary"
+        android:layout_weight="10"
+        android:elevation="10dp"
+        android:text="activar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="70" >
+
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.MapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>
