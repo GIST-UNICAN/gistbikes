@@ -113,7 +113,7 @@ public class serviceBoot extends Service implements LocationListener {
         //RECUPERAR POLIGONOS;
         //RECUPERAR TRAZA;
 
-        Toast.makeText(this, "servicio creado 2", Toast.LENGTH_LONG).show();
+        Log.d("POLIGONOS 0", "0");
         poligonos = recuperarPoligonos();
         Log.d("POLIGONOS", String.valueOf(poligonos));
 
@@ -140,7 +140,7 @@ public class serviceBoot extends Service implements LocationListener {
         //Se activa el servicio de localización
         servicioActivo = true;
         //fijamos el tiempo en milisecs
-        tiempo = 1000;
+        this.tiempo = 1000;
         //reseteamos el contador
         numeroDeRegistro = 0;
         //Crea el objeto que gestiona las localizaciones
