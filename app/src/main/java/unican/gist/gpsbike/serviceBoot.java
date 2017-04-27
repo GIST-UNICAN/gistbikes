@@ -358,7 +358,7 @@ public class serviceBoot extends Service implements LocationListener {
     }
 
     @Override
-    public void onProviderDisabled(String provider) {
+    public void onProviderDisabled(String provider ) {
 
     }
 
