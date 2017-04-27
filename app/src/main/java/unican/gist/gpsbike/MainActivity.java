@@ -23,6 +23,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -39,6 +40,7 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+import io.fabric.sdk.android.Fabric;
 import rx.Subscriber;
 import unican.gist.gpsbike.model.GetVersionUseCase;
 import unican.gist.gpsbike.model.Utils;
@@ -85,6 +87,7 @@ public class MainActivity extends Activity implements LocationListener, OnMapRea
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main);
         utils = new Utils(getApplicationContext());
         botonActivar = (Button) findViewById(R.id.BotonActivar);
