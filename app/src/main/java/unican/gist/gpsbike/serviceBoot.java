@@ -115,10 +115,12 @@ public class serviceBoot extends Service implements LocationListener {
 
         Log.d("POLIGONOS 0", "0");
         poligonos = recuperarPoligonos();
-        Log.d("POLIGONOS", String.valueOf(poligonos));
+        Log.d("POLIGONOS", String.valueOf(poligonos.get(10)));
 
         polilineaTraza = recuperarPolilineaTraza();
-        //iniciarServicio();
+        Log.d("POLIGONOS",String.valueOf(polilineaTraza[10]));
+
+        iniciarServicio();
     }
 
     public Boolean checkMobileData() {
@@ -136,7 +138,7 @@ public class serviceBoot extends Service implements LocationListener {
 
 
     public void iniciarServicio() {
-        Toast.makeText(this, "servicio iniciado", Toast.LENGTH_LONG).show();
+        Log.d("POLIGONOS","12");
         //Se activa el servicio de localización
         servicioActivo = true;
         //fijamos el tiempo en milisecs
@@ -162,6 +164,8 @@ public class serviceBoot extends Service implements LocationListener {
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
+        Log.d("POLIGONOS", "13");
+
         managerLocation.requestLocationUpdates(provider, tiempo, 0, this);
     }
 
@@ -469,7 +473,7 @@ public class serviceBoot extends Service implements LocationListener {
     }
 
     private ArrayList<double[]> recuperarPoligonos() {
-        Log.d("1", "1");
+        Log.d("POLIGONOS", "1");
 
         ArrayList<double[]> poligonosRecuperados = new ArrayList<>();
         String line = "";
@@ -479,11 +483,11 @@ public class serviceBoot extends Service implements LocationListener {
                     Environment.DIRECTORY_DOCUMENTS), "gpsbike");
             FileChannel inChannel = new FileInputStream(file.getAbsolutePath() + "/poligonos.txt").getChannel();
             FileChannel outChannel = new FileOutputStream(getApplicationContext().getFilesDir() + "/poligonos.txt").getChannel();
-            Log.d("2", "1");
+            Log.d("POLIGONOS", "2");
 
             try {
                 inChannel.transferTo(0, inChannel.size(), outChannel);
-                Log.d("3", "1");
+                Log.d("POLIGONOS", "3");
 
             } finally {
                 if (inChannel != null)
@@ -492,7 +496,7 @@ public class serviceBoot extends Service implements LocationListener {
                     outChannel.close();
             }
             InputStream instream = openFileInput("poligonos.txt");
-            Log.d("4", "1");
+            Log.d("POLIGONOS", "4");
 
             if (instream != null) {
                 InputStreamReader inputreader = new InputStreamReader(instream);
@@ -512,17 +516,18 @@ public class serviceBoot extends Service implements LocationListener {
         }
         String[] verticesPoligono = line1.split(":");
         for (int i = 0; i < verticesPoligono.length - 8; i = i + 8) {
-            Log.d("NUMERO POLIGONO ", String.valueOf(i));
             double[] polig = {Double.valueOf(verticesPoligono[i]), Double.valueOf(verticesPoligono[i + 1]), Double.valueOf(verticesPoligono[i + 2]), Double.valueOf(verticesPoligono[i + 3]), Double.valueOf(verticesPoligono[i + 4]), Double.valueOf(verticesPoligono[i + 5]), Double.valueOf(verticesPoligono[i + 6]), Double.valueOf(verticesPoligono[i + 7])};
             poligonosRecuperados.add(polig);
             //Log.d("poligono", String.valueOf(polig[6]));
             //Log.d("poligono", String.valueOf(polig[7]));
         }
+        Log.d("POLIGONOS", "5");
         return poligonosRecuperados;
     }
 
     private double[] recuperarPolilineaTraza() {
         double[] polilineaTrazaRecuperada = null;
+        Log.d("POLIGONOS", "6");
         String line = "";
         String line1 = "";
         try {
@@ -530,8 +535,10 @@ public class serviceBoot extends Service implements LocationListener {
                     Environment.DIRECTORY_DOCUMENTS), "gpsbike");
             FileChannel inChannel = new FileInputStream(file.getAbsolutePath() + "/puntos.txt").getChannel();
             FileChannel outChannel = new FileOutputStream(getApplicationContext().getFilesDir() + "/puntos.txt").getChannel();
+            Log.d("POLIGONOS", "7");
             try {
                 inChannel.transferTo(0, inChannel.size(), outChannel);
+                Log.d("POLIGONOS", "8");
             } finally {
                 if (inChannel != null)
                     inChannel.close();
@@ -540,10 +547,12 @@ public class serviceBoot extends Service implements LocationListener {
             }
             InputStream instream = openFileInput("puntos.txt");
             if (instream != null) {
+                Log.d("POLIGONOS", "9");
                 InputStreamReader inputreader = new InputStreamReader(instream);
                 BufferedReader buffreader = new BufferedReader(inputreader);
 
                 try {
+                    Log.d("POLIGONOS", "10");
                     while ((line = buffreader.readLine()) != null)
                         line1 = line1 + line;
                 } catch (Exception e) {
@@ -559,6 +568,7 @@ public class serviceBoot extends Service implements LocationListener {
         for (int i = 0; i < verticesLinea.length; i++) {
             polilineaTrazaRecuperada[i] = Double.valueOf(verticesLinea[i]);
         }
+        Log.d("POLIGONOS", "11");
         return polilineaTrazaRecuperada;
     }
 

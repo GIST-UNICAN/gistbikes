@@ -440,17 +440,14 @@ public class MainActivity extends Activity implements LocationListener, OnMapRea
         boolean permisoConcedido = false;
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // Should we show an explanation?
-            Log.d("entra", "0");
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                     Manifest.permission.ACCESS_FINE_LOCATION)) {
-                Log.d("entra", "1");
                 localizacion = true;
         /* Aquí se mostrará la explicación al usuario de porqué es
         necesario el uso de un determinado permiso, pudiéndose mostrar de manera asíncrona, o lo que es lo mismo, desde un
         hilo secundario, sin bloquear el hilo principal, y a la espera de
         que el usuario concede el permiso necesario tras visualizar la explicación.*/
             } else {
-                Log.d("entra", "2");
 
         /* Se realiza la petición del permiso. En este caso permisos
         para leer los contactos.*/
@@ -515,7 +512,7 @@ public class MainActivity extends Activity implements LocationListener, OnMapRea
                 String[] poli;
                 //Vamos separando los valores que vienen unidos por comas y los almacenamos
                 int zonaInicio = 1;
-                int zonaFin = 73;
+                int zonaFin = 628;
                 db.polygon(zonaInicio, zonaFin);
             }
         }
